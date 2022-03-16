@@ -29,6 +29,8 @@ namespace TodosData
 
             services.AddControllers();
 
+            services.AddDbContext<ApplicationDbContext>();
+
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll", services => {
