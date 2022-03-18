@@ -18,30 +18,32 @@ export default() => {
     console.log("app is running");
     Setup();
 
-    let todoItem = {
-        Id: 0,
-        Title: "Test Todo Item 1",
-        Description: "Optional",
-        Owner: "Carlos Lopez"
-    };
+    //CREATING AN OBJECT
+    // let todoItem = {
+    //     Id: 0,
+    //     Title: "Test Todo Item 1",
+    //     Description: "Optional",
+    //     Owner: "Carlos Lopez"
+    // };
 
-    fetch(TODO_URL, {
-        method: "POST",
-        headers: {
-            "Content-Type" : "application/json"
-        },
-        body: JSON.stringify(todoItem)
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log(data);
-    })
-    .catch(err => console.log(err));
+    //POSTING AN OBJECT TO THE DATABASE
+    // fetch(TODO_URL, {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type" : "application/json"
+    //     },
+    //     body: JSON.stringify(todoItem)
+    // })
+    // .then(response => response.text())
+    // .then(data => {
+    //     console.log(data);
+    // })
+    // .catch(err => console.log(err));
     
 }
 
 function Setup(){
-    navbar.innerHTML = Header.SetupNavBar()
+    navbar.innerHTML = Header.SetupNavBar();
     footer.innerHTML = Footer.SetupFooter();
     Header.SetupEventListeners();
 }

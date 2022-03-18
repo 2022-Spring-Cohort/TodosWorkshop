@@ -33,6 +33,12 @@ namespace TodosData.Controllers
             //};
         }
 
+        //[HttpGet("{id}")]
+        //public ActionResult<Todo> Get(int id)
+        //{
+        //    return _context.Todos.Find(id);
+        //}
+
         [HttpPost]
         public bool Post(Todo todo)
         {

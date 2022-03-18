@@ -1,4 +1,4 @@
-const TODO_URL = "https://localhost:44329/todos";
+import * as CONSTANTS from "../components/constants";
 const contentDiv = document.getElementById("content");
 
 export default {
@@ -6,7 +6,7 @@ export default {
 }
 
 function GetTodos(){
-    fetch(TODO_URL)
+    fetch(CONSTANTS.TodoAPIURL)
     .then(response => response.json())
     .then(data => {
         contentDiv.innerHTML = Process(data);
@@ -16,12 +16,18 @@ function GetTodos(){
 
 function Process(todos){
     return `
-        <ul>
+        <ol>
             ${todos.map(todo =>{
                 return `
-                    <li>${todo.title}</li>
+                    <li>
+                        ${todo.title}
+                        <ul>
+                            <li>Owner: ${todo.owner}</li>
+                            <li>Description: ${todo.description}</li>
+                        </ul>
+                    </li>
                 `;
             }).join('')}
-        </ul>
+        </ol>
     `;
 }

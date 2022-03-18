@@ -8,6 +8,7 @@ namespace TodosData.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime DueDate { get; set; }
-        public string Owner { get; set; }
+        public int OwnerId { get; set; }
+        public virtual Owner Owner { get; set; }
     }
 }
