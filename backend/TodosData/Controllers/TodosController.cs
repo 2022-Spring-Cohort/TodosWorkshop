@@ -7,7 +7,7 @@ using TodosData.Models;
 
 namespace TodosData.Controllers
 {
-    
+
     [ApiController]
     [Route("[controller]")]
     public class TodosController : ControllerBase
@@ -17,7 +17,7 @@ namespace TodosData.Controllers
 
         public TodosController(ApplicationDbContext context)
         {
-             _context = context;
+            _context = context;
         }
 
         [HttpGet]
@@ -33,21 +33,21 @@ namespace TodosData.Controllers
             //};
         }
 
-        //[HttpGet("{id}")]
-        //public ActionResult<Todo> Get(int id)
-        //{
-        //    return _context.Todos.Find(id);
-        //}
+        [HttpGet("{id}")]
+        public ActionResult<Todo> Get(int id)
+        {
+            return _context.Todos.Find(id);
+        }
 
         [HttpPost]
-        public bool Post(Todo todo)
+        public IEnumerable<Todo> Post(Todo todo)
         {
             todo.DueDate = DateTime.Now.AddDays(3);
 
             _context.Todos.Add(todo);
             _context.SaveChanges();
 
-            return true;
+            return _context.Todos.ToList();
         }
 
 
