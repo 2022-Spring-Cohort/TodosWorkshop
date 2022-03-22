@@ -50,6 +50,26 @@ namespace TodosData.Controllers
             return _context.Todos.ToList();
         }
 
+        [HttpDelete("{id}")]
+        public IEnumerable<Todo> Delete(int id)
+        {
+            Todo itemToDelete = _context.Todos.Find(id);
+            _context.Todos.Remove(itemToDelete);
+            _context.SaveChanges();
+
+            return _context.Todos.ToList();
+        }
+
+        [HttpPut("{id}")]
+        public Todo Put(int id, Todo todo)
+        {
+            _context.Todos.Update(todo);
+            _context.SaveChanges();
+
+
+            return _context.Todos.Find(id);
+        }
+
 
     }
 }
