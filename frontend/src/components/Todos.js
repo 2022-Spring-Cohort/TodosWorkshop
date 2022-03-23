@@ -13,7 +13,7 @@ export default {
 
 function GetTodos(){
 
-    apiActions.allRequests(CONSTANTS.TodoAPIURL, data => {
+    apiActions.getRequest(CONSTANTS.TodoAPIURL, data => {
         contentDiv.innerHTML = Process(data);
         AddEventListeners();
     });

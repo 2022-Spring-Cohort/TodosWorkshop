@@ -61,13 +61,14 @@ namespace TodosData.Controllers
         }
 
         [HttpPut("{id}")]
-        public Todo Put(int id, Todo todo)
+        public Todo Put(Todo todo)
         {
             _context.Todos.Update(todo);
             _context.SaveChanges();
 
+            todo.Owner = _context.Owners.Find(todo.OwnerId);
 
-            return _context.Todos.Find(id);
+            return todo;
         }
 
 
