@@ -2,8 +2,6 @@ import * as CONSTANTS from "../components/constants";
 import Todo from "../components/Todo";
 import apiActions from "../api/api-actions";
 
-const contentDiv = document.getElementById("content");
-
 
 export default {
     GetTodos,
@@ -14,7 +12,7 @@ export default {
 function GetTodos(){
 
     apiActions.getRequest(CONSTANTS.TodoAPIURL, data => {
-        contentDiv.innerHTML = Process(data);
+        CONSTANTS.Content.innerHTML = Process(data);
         AddEventListeners();
     });
 
@@ -70,7 +68,7 @@ function AddEventListeners(){
             console.log('delete was pushed');
 
             apiActions.deleteRequest(CONSTANTS.TodoAPIURL, id, data => {
-                contentDiv.innerHTML = Process(data);
+                CONSTANTS.Content.innerHTML = Process(data);
                 AddEventListeners();
             });
 

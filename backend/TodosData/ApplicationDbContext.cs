@@ -9,6 +9,8 @@ namespace TodosData
         public DbSet<Todo> Todos { get; set; }
         public DbSet<Owner> Owners { get; set; }
 
+        public DbSet<Vehicle> Vehicles { get; set; }
+
         //public IConfiguration Configuration;
         //public ApplicationDbContext(IConfiguration configuration)
         //{
@@ -35,7 +37,13 @@ namespace TodosData
                 new Todo() { Id = 2, Title= "Clean living room", Description = "Seriously, clean it.", DueDate= System.DateTime.Now.AddDays(2), OwnerId = 1},
                 new Todo() { Id = 3, Title = "Teach class", Description = "", DueDate = System.DateTime.Now, OwnerId = 3}
                 );
-            
+
+            builder.Entity<Vehicle>().HasData(
+                new Vehicle() { Id = 1, OwnerId = 1, Make = "Ford", Model = "Fusion", Year = "2019" },
+                new Vehicle() { Id = 2, OwnerId = 1, Make = "Toyota", Model = "Camry", Year = "2018" },
+                new Vehicle() { Id = 3, OwnerId = 1, Make = "Tesla", Model = "Model X", Year = "2020" }
+                );
+
             base.OnModelCreating(builder);
         }
 
